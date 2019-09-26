@@ -30,4 +30,22 @@ public class Ride {
     String getComments(){
         return this.comments;
     }
+
+    //setters
+    public void setDistance(String distance){
+        this.distance=distance;
+    }
+
+    public void setSpeed(String speed){
+        this.speed=speed;
+    }
+
+    public void setCadence(String cadence){
+        this.cadence=cadence;
+    }
+
+    public void setComments(String comments){
+        this.comments=comments;
+    }
+
 }
