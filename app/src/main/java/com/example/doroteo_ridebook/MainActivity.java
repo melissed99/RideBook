@@ -1,7 +1,9 @@
 package com.example.doroteo_ridebook;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,12 +31,14 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
 
         rideList = findViewById(R.id.ride_list);
 
-        String []distances ={"0.7"};
+        String []distances ={"0.8"};
         String []speeds={"10"};
         String []cadences={"4"};
         String []comments={"vv"};
 
         rideDataList = new ArrayList<>();
+
+        //rideAdapter = new ArrayAdapter<Ride>(MainActivity.this, android.R.layout.simple_list_item_multiple_choice);
 
         for(int i=0;i<distances.length;i++){
             rideDataList.add((new Ride(distances[i],speeds[i], cadences[i], comments[i])));
@@ -57,7 +61,28 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 ridePos = rideDataList.get(i);
-                new EditRideFragment().show(getSupportFragmentManager(), "EDIT_CITY");
+
+                AlertDialog.Builder editDeleteAlert = new AlertDialog.Builder(MainActivity.this);
+                editDeleteAlert.setMessage("edit or delete?")
+                        .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                new EditRideFragment().show(getSupportFragmentManager(), "EDIT_CITY");
+                            }
+                        })
+                        .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                rideDataList.remove(ridePos);
+                                rideAdapter.notifyDataSetChanged();
+
+                            }
+                        });
+                AlertDialog alert = editDeleteAlert.create();
+                alert.show();
+
+                //ridePos = rideDataList.get(i);
+                //new EditRideFragment().show(getSupportFragmentManager(), "EDIT_CITY");
             }
         });
 
@@ -69,10 +94,13 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
         rideAdapter.add(newRide);
     }
 
+    @Override
     public void onEditPressed(String distanceVal, String speedVal, String cadenceVal, String commentsVal){
         ridePos.setDistance(distanceVal);
         ridePos.setSpeed(speedVal);
         ridePos.setCadence(cadenceVal);
         ridePos.setComments(commentsVal);
+
+    //rideList.setAdapter(rideAdapter);
     }
 }
