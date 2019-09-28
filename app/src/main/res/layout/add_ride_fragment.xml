@@ -34,13 +34,29 @@
 <!--        android:hint="time"-->
 <!--        android:inputType="textPersonName"/>-->
 
+    <EditText
+        android:id="@+id/date_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter date in format: yyyy/mm/dd"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/time_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter time in format: hh:ss"
+        android:inputType="textPersonName"/>
+
 
     <EditText
         android:id="@+id/distance_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="distance"
+        android:hint="Enter distance in km"
         android:inputType="textPersonName"/>
 
     <EditText
@@ -48,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="avg speed"
+        android:hint="Enter average speed in km/h"
         android:inputType="textPersonName"/>
 
     <EditText
@@ -56,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="avg cadence"
+        android:hint="Enter average cadence in revs per min"
         android:inputType="textPersonName"/>
 
     <EditText
@@ -64,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="comments (optional)"
+        android:hint="Enter comments up to 20 char (optional)"
         android:inputType="textPersonName"/>
 
 </LinearLayout>

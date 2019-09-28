@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class EditRideFragment extends DialogFragment {
+    private EditText dateVal;
+    private EditText timeVal;
     private EditText distanceVal;
     private EditText speedVal;
     private EditText cadenceVal;
@@ -21,7 +23,7 @@ public class EditRideFragment extends DialogFragment {
     private OnFragmentInteractionListener listener;
 
     public interface OnFragmentInteractionListener{
-        void onEditPressed(String distanceVal, String speedVal, String cadenceVal, String commentsVal);
+        void onEditPressed(String dateVal, String timeVal, String distanceVal, String speedVal, String cadenceVal, String commentsVal);
     }
 
     @Override
@@ -40,6 +42,8 @@ public class EditRideFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.add_ride_fragment, null);
+        dateVal= view.findViewById(R.id.date_editText);
+        timeVal=view.findViewById(R.id.time_editText);
         distanceVal=view.findViewById(R.id.distance_editText);
         speedVal=view.findViewById(R.id.speed_editText);
         cadenceVal=view.findViewById(R.id.cadence_editText);
@@ -53,11 +57,13 @@ public class EditRideFragment extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        String date = dateVal.getText().toString();
+                        String time= timeVal.getText().toString();
                         String distance = distanceVal.getText().toString();
                         String speed = speedVal.getText().toString();
                         String cadence = cadenceVal.getText().toString();
                         String comments= commentsVal.getText().toString();
-                        listener.onEditPressed(distance, speed, cadence, comments);
+                        listener.onEditPressed(date, time, distance, speed, cadence, comments);
                     }
                 }).create();
     }

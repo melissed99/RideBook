@@ -21,9 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-//import android.support.v4.app.Fragment;
 
-public class AddRideFragment extends DialogFragment {
+public class AddRideFragment extends DialogFragment{
+    private EditText dateVal;
+    private EditText timeVal;
     private EditText distanceVal;
     private EditText speedVal;
     private EditText cadenceVal;
@@ -31,9 +32,16 @@ public class AddRideFragment extends DialogFragment {
     private OnFragmentInteractionListener listener;
 
     public Button addDate;
-    public TextView dateAdd;
+    public TextView dateText;
+
+    DatePickerDialog datePickerDialog;
+
+    int year;
+    int month;
+    int day;
 
     private DatePickerDialog.OnDateSetListener dateSetListener;
+
 //
 //    @Override
 //    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -69,47 +77,58 @@ public class AddRideFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.add_ride_fragment, null);
+        dateVal=view.findViewById(R.id.date_editText);
+        timeVal=view.findViewById(R.id.time_editText);
         distanceVal=view.findViewById(R.id.distance_editText);
         speedVal=view.findViewById(R.id.speed_editText);
         cadenceVal=view.findViewById(R.id.cadence_editText);
         commentsVal=view.findViewById(R.id.comments_editText);
 
-//        addDate=view.findViewById(R.id.add_ride_button);
-//
+
+//        addDate = addDate.findViewById(R.id.date_button);
+//        dateText= dateText.findViewById(R.id.date_editText);
 //        addDate.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                //DialogFragment datePicker = new DateFragment();
-//                //datePicker.show(getSupportFragmentManager(),"date picker");
-//                //new DateFragment().show(getSupportFragmentManager(), "ADD_DATE");
 //
-//
-//                //final Button dateButton = (Button) view;
-//
-//                Calendar calendar = Calendar.getInstance();
-//
-//                int year = calendar.get(Calendar.YEAR);
-//                int month = calendar.get(Calendar.MONTH);
-//                int day = calendar.get(Calendar.DAY_OF_MONTH);
-//
-//
-//                DatePickerDialog dialog = new DatePickerDialog(AddRideFragment.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth), dateSetListener, year, month, day);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                dialog.show();
-//
-//            }
-//        });
-//
-//
-//        dateSetListener = new DialogPickerDialog.OnDateSetListener(){
-//
-//        }
-//
-//
-//
-//
-//
+//                Calendar c = Calendar.getInstance();
+//                year = c.get(Calendar.YEAR);
+//                month = c.get(Calendar.MONTH);
+//                day = c.get(Calendar.DAY_OF_MONTH);
+//                datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//                            @Override
+//                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                                dateText.setText(day+"/"+(month+1)+"/"+year);
+//                            }
+//                        }, year, month,day);
+//                //datePickerDialog = new DatePickerDialog(getActivity(), DateFragment.this, year, month, day);
+//                datePickerDialog.show();
 
+
+//
+//                DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                        year = year;
+//
+//                    }
+//                };
+//                DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
+//
+//                    public void onDateSet(DatePicker view, int year,
+//                                          int monthOfYear, int dayOfMonth) {
+//                        mYear = year;
+//                        mMonth = monthOfYear;
+//                        mDay = dayOfMonth;
+//                        updateDisplay();
+//                    }
+//                };
+//
+//                DatePickerDialog d = new DatePickerDialog(getActivity(),
+//                        R.style.MyThemee, mDateSetListener, mYear, mMonth, mDay);
+//                d.show();
+ //           }
+//});
 
 
 
@@ -121,12 +140,16 @@ public class AddRideFragment extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        String date = dateVal.getText().toString();
+                        String time = timeVal.getText().toString();
                         String distance = distanceVal.getText().toString();
                         String speed = speedVal.getText().toString();
                         String cadence = cadenceVal.getText().toString();
                         String comments= commentsVal.getText().toString();
-                        listener.onOkPressed(new Ride(distance, speed, cadence, comments));
+                        listener.onOkPressed(new Ride(date, time, distance, speed, cadence, comments));
                     }
                 }).create();
+
+        //Button dateButton = (Button) findViewId(R.id.date_button);
     }
 }

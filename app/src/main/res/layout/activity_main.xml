@@ -32,4 +32,20 @@
         android:layout_gravity="bottom|end"
         app:srcCompat="@android:drawable/ic_input_add"/>
 
+    <TextView
+        android:id="@+id/total_distance_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Distance:"
+        android:textSize="30sp"
+        android:layout_gravity="bottom|left"/>
+
+    <TextView
+        android:id="@+id/total_distance_value"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30sp" />
+
+
 </FrameLayout>

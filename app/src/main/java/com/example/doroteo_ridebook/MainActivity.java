@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
 
         rideList = findViewById(R.id.ride_list);
 
+        String []dates={};
+        String []times={};
         String []distances ={};
         String []speeds={};
         String []cadences={};
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
         rideDataList = new ArrayList<>();
 
         for(int i=0;i<distances.length;i++){
-            rideDataList.add((new Ride(distances[i],speeds[i], cadences[i], comments[i])));
+            rideDataList.add((new Ride(dates[i], times[i], distances[i],speeds[i], cadences[i], comments[i])));
         }
 
         rideAdapter = new CustomList(this,rideDataList);
@@ -105,7 +107,9 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
     }
 
     @Override
-    public void onEditPressed(String distanceVal, String speedVal, String cadenceVal, String commentsVal){
+    public void onEditPressed(String dateVal, String timeVal, String distanceVal, String speedVal, String cadenceVal, String commentsVal){
+        ridePos.setDate(dateVal);
+        ridePos.setTime(timeVal);
         ridePos.setDistance(distanceVal);
         ridePos.setSpeed(speedVal);
         ridePos.setCadence(cadenceVal);
