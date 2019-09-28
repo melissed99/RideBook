@@ -3,18 +3,22 @@ package com.example.doroteo_ridebook;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+//import android.widget.DatePicker;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements AddRideFragment.OnFragmentInteractionListener, EditRideFragment.OnFragmentInteractionListener {
 
@@ -24,6 +28,17 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
     ArrayList<Ride> rideDataList;
     Ride ridePos;
 
+    //message will display telling user to add a ride. message will disappear when there are rides
+    @Override
+    public void onContentChanged(){
+        super.onContentChanged();
+
+        View empty = findViewById(R.id.empty_rides_string);
+        ListView list = (ListView) findViewById(R.id.ride_list);
+        list.setEmptyView(empty);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +46,12 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
 
         rideList = findViewById(R.id.ride_list);
 
-        String []distances ={"0.8"};
-        String []speeds={"10"};
-        String []cadences={"4"};
-        String []comments={"vv"};
+        String []distances ={};
+        String []speeds={};
+        String []cadences={};
+        String []comments={};
 
         rideDataList = new ArrayList<>();
-
-        //rideAdapter = new ArrayAdapter<Ride>(MainActivity.this, android.R.layout.simple_list_item_multiple_choice);
 
         for(int i=0;i<distances.length;i++){
             rideDataList.add((new Ride(distances[i],speeds[i], cadences[i], comments[i])));
@@ -51,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
         addRideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AddRideFragment().show(getSupportFragmentManager(), "ADD_CITY");
+                new AddRideFragment().show(getSupportFragmentManager(), "ADD_RIDE");
             }
         });
 
@@ -67,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
                         .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                new EditRideFragment().show(getSupportFragmentManager(), "EDIT_CITY");
+                                new EditRideFragment().show(getSupportFragmentManager(), "EDIT_RIDE");
                             }
                         })
                         .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -80,9 +93,6 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
                         });
                 AlertDialog alert = editDeleteAlert.create();
                 alert.show();
-
-                //ridePos = rideDataList.get(i);
-                //new EditRideFragment().show(getSupportFragmentManager(), "EDIT_CITY");
             }
         });
 
@@ -101,6 +111,5 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
         ridePos.setCadence(cadenceVal);
         ridePos.setComments(commentsVal);
 
-    //rideList.setAdapter(rideAdapter);
     }
 }
