@@ -8,6 +8,7 @@ public class Ride {
     private String speed;
     private String cadence;
     private String comments;
+    private int totalDistance;
 
     Ride (String date, String time, String distance, String speed, String cadence, String comments){
         this.date = date;
@@ -19,6 +20,8 @@ public class Ride {
     }
 
     //getters
+
+    int getTotalDistance(){ return this.totalDistance; }
 
     String getDate(){ return this.date; }
 
@@ -39,6 +42,8 @@ public class Ride {
     }
 
     //setters
+
+    public void setTotalDistance(int totalDistance){this.totalDistance = totalDistance; }
 
     public void setDate(String date) { this.date = date; }
 

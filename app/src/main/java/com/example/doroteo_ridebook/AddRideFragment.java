@@ -12,10 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
+//import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.util.Calendar;
+//import java.text.DateFormat;
+//import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,31 +31,16 @@ public class AddRideFragment extends DialogFragment{
     private EditText commentsVal;
     private OnFragmentInteractionListener listener;
 
-    public Button addDate;
-    public TextView dateText;
+   // public Button addDate;
+    //public TextView dateText;
 
-    DatePickerDialog datePickerDialog;
+    //DatePickerDialog datePickerDialog;
+//
+//    int year;
+//    int month;
+//    int day;
 
-    int year;
-    int month;
-    int day;
-
-    private DatePickerDialog.OnDateSetListener dateSetListener;
-
-//
-//    @Override
-//    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-//
-//        Calendar c = Calendar.getInstance();
-//        c.set(Calendar.YEAR, year);
-//        c.set(Calendar.MONTH, month);
-//        c.set(Calendar.DAY_OF_MONTH, day);
-//        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-//
-//        TextView dateAdd = getView().findViewById(R.id.date_editText);
-//        dateAdd.setText(currentDateString);
-//
-//    }
+    //private DatePickerDialog.OnDateSetListener dateSetListener;
 
     public interface OnFragmentInteractionListener{
         void onOkPressed(Ride newRide);
@@ -84,54 +69,6 @@ public class AddRideFragment extends DialogFragment{
         cadenceVal=view.findViewById(R.id.cadence_editText);
         commentsVal=view.findViewById(R.id.comments_editText);
 
-
-//        addDate = addDate.findViewById(R.id.date_button);
-//        dateText= dateText.findViewById(R.id.date_editText);
-//        addDate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Calendar c = Calendar.getInstance();
-//                year = c.get(Calendar.YEAR);
-//                month = c.get(Calendar.MONTH);
-//                day = c.get(Calendar.DAY_OF_MONTH);
-//                datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-//                            @Override
-//                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-//                                dateText.setText(day+"/"+(month+1)+"/"+year);
-//                            }
-//                        }, year, month,day);
-//                //datePickerDialog = new DatePickerDialog(getActivity(), DateFragment.this, year, month, day);
-//                datePickerDialog.show();
-
-
-//
-//                DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-//                        year = year;
-//
-//                    }
-//                };
-//                DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
-//
-//                    public void onDateSet(DatePicker view, int year,
-//                                          int monthOfYear, int dayOfMonth) {
-//                        mYear = year;
-//                        mMonth = monthOfYear;
-//                        mDay = dayOfMonth;
-//                        updateDisplay();
-//                    }
-//                };
-//
-//                DatePickerDialog d = new DatePickerDialog(getActivity(),
-//                        R.style.MyThemee, mDateSetListener, mYear, mMonth, mDay);
-//                d.show();
- //           }
-//});
-
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
@@ -149,7 +86,5 @@ public class AddRideFragment extends DialogFragment{
                         listener.onOkPressed(new Ride(date, time, distance, speed, cadence, comments));
                     }
                 }).create();
-
-        //Button dateButton = (Button) findViewId(R.id.date_button);
     }
 }
