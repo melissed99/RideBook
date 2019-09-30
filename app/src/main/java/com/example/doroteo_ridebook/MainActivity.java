@@ -23,9 +23,13 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
     ArrayList<Ride> rideDataList;
     Ride ridePos;
 
+    String get_date;
+    String get_time;
+    String get_distance;
+    String get_speed;
+    String get_cadence;
+    String get_comments;
 
-    Ride dateVal;
-    String dataVal;
 
 
     //message will display telling user to add a ride. message will disappear when there are rides
@@ -81,7 +85,13 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
                         .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //dateVal=ridePos.getDistance();
+                                get_date = ridePos.getDate();
+                                get_time = ridePos.getTime();
+                                get_distance = ridePos.getDistance();
+                                get_speed = ridePos.getSpeed();
+                                get_cadence = ridePos.getCadence();
+                                get_comments = ridePos.getComments();
+
                                 new EditRideFragment().show(getSupportFragmentManager(), "EDIT_RIDE");
                                 updateTotalDist();
                             }
@@ -106,9 +116,12 @@ public class MainActivity extends AppCompatActivity implements AddRideFragment.O
         rideAdapter.notifyDataSetChanged();
     }
 
-//    public String getDate(){
-//        return dateVal;
-//    }
+    public String get_Date(){ return get_date; }
+    public String get_Time(){ return get_time; }
+    public String get_Distance(){ return get_distance; }
+    public String get_Speed(){ return get_speed; }
+    public String get_Cadence(){ return get_cadence; }
+    public String get_Comments(){ return get_comments; }
 
     @Override
     public void onOkPressed(Ride newRide) {

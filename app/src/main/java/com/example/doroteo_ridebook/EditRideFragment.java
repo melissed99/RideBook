@@ -23,7 +23,13 @@ public class EditRideFragment extends DialogFragment {
     private OnFragmentInteractionListener listener;
 
     public interface OnFragmentInteractionListener{
-        void onEditPressed(String dateVal, String timeVal, String distanceVal, String speedVal, String cadenceVal, String commentsVal);
+        void onEditPressed(String date_Val, String time_Val, String distance_Val, String speed_Val, String cadence_Val, String comments_Val);
+        String get_Date();
+        String get_Time();
+        String get_Distance();
+        String get_Speed();
+        String get_Cadence();
+        String get_Comments();
     }
 
     @Override
@@ -48,6 +54,13 @@ public class EditRideFragment extends DialogFragment {
         speedVal=view.findViewById(R.id.speed_editText);
         cadenceVal=view.findViewById(R.id.cadence_editText);
         commentsVal=view.findViewById(R.id.comments_editText);
+
+        dateVal.setText(listener.get_Date());
+        timeVal.setText(listener.get_Time());
+        distanceVal.setText(listener.get_Distance());
+        speedVal.setText(listener.get_Speed());
+        cadenceVal.setText(listener.get_Cadence());
+        commentsVal.setText(listener.get_Comments());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
