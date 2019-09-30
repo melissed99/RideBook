@@ -3,37 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/date_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Add Date"/>
-
-    <Button
-        android:id="@+id/time_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Add Time"/>
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/date_editText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Date"-->
-<!--        android:inputType="textPersonName"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/time_editText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:hint="time"-->
-<!--        android:inputType="textPersonName"/>-->
-
     <EditText
         android:id="@+id/date_editText"
         android:layout_width="match_parent"
