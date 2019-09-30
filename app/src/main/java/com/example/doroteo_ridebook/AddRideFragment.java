@@ -1,21 +1,13 @@
 package com.example.doroteo_ridebook;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-//import android.widget.TextView;
 
-//import java.text.DateFormat;
-//import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,17 +22,6 @@ public class AddRideFragment extends DialogFragment{
     private EditText cadenceVal;
     private EditText commentsVal;
     private OnFragmentInteractionListener listener;
-
-   // public Button addDate;
-    //public TextView dateText;
-
-    //DatePickerDialog datePickerDialog;
-//
-//    int year;
-//    int month;
-//    int day;
-
-    //private DatePickerDialog.OnDateSetListener dateSetListener;
 
     public interface OnFragmentInteractionListener{
         void onOkPressed(Ride newRide);

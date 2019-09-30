@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ public class CustomList extends ArrayAdapter<Ride> {
 
         Ride ride = rides.get(position);
 
-        TextView totalDistance=view.findViewById(R.id.total_distance_value);
         TextView date = view.findViewById(R.id.date_text);
         TextView time = view.findViewById(R.id.time_text);
         TextView distance = view.findViewById(R.id.distance_text);
@@ -41,8 +39,6 @@ public class CustomList extends ArrayAdapter<Ride> {
         TextView cadence = view.findViewById(R.id.cadence_text);
         TextView comments = view.findViewById(R.id.comments_text);
 
-
-        //totalDistance.setText(ride.getTotalDistance);
         date.setText(ride.getDate());
         time.setText(ride.getTime());
         distance.setText(ride.getDistance());
@@ -51,21 +47,6 @@ public class CustomList extends ArrayAdapter<Ride> {
         comments.setText(ride.getComments());
 
         return view;
-    }
-
-    private int convert(String[] string) { //Note the [] after the String.
-        int[] number = new int[string.length];
-        int totalDistanceVal = 0;
-
-        for (int i = 0; i < string.length; i++) {
-            number[i] = Integer.parseInt(string[i]);
-        }
-        //int[] totalDistanceArray = number;
-        //int sum = IntStream.of(totalDistanceArray).sum();
-        for (int i : number)
-            totalDistanceVal += i;
-
-        return  totalDistanceVal;
     }
 
 }
