@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+
+// Edit class so that we are able to edit rides in the list
+// a listener interface is implemented to allow us to pass a new Ride object to the onOkPressed() method
 public class EditRideFragment extends DialogFragment {
     private EditText dateVal;
     private EditText timeVal;
@@ -22,6 +25,7 @@ public class EditRideFragment extends DialogFragment {
     private EditText commentsVal;
     private OnFragmentInteractionListener listener;
 
+    // a listener interface is implemented to allow us to pass a new Ride object to the onEditPressed() method
     public interface OnFragmentInteractionListener{
         void onEditPressed(String date_Val, String time_Val, String distance_Val, String speed_Val, String cadence_Val, String comments_Val);
         String get_Date();
@@ -32,6 +36,7 @@ public class EditRideFragment extends DialogFragment {
         String get_Comments();
     }
 
+    //cmput from 301 lab3 fragment tutorial
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -44,6 +49,7 @@ public class EditRideFragment extends DialogFragment {
         }
     }
 
+    //dialog popup for the edit ride text fields
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){

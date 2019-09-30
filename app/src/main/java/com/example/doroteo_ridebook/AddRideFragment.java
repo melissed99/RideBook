@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+//code used from the custom list tutorial from CMPUT 301 lab 3
+// Add class so that we are able to add rides to the list
 public class AddRideFragment extends DialogFragment{
     private EditText dateVal;
     private EditText timeVal;
@@ -23,10 +25,12 @@ public class AddRideFragment extends DialogFragment{
     private EditText commentsVal;
     private OnFragmentInteractionListener listener;
 
+    // a listener interface is implemented to allow us to pass a new Ride object to the onOkPressed() method
     public interface OnFragmentInteractionListener{
         void onOkPressed(Ride newRide);
     }
 
+    //cmput from 301 lab3 fragment tutorial
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -39,6 +43,7 @@ public class AddRideFragment extends DialogFragment{
         }
     }
 
+    //dialog popup for the add ride text fields
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){

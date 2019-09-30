@@ -12,17 +12,25 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 
+//code used from the custom list tutorial from CMPUT 301 lab 3
+//
+
 public class CustomList extends ArrayAdapter<Ride> {
 
+    //holds the rides
     private ArrayList<Ride> rides;
+    // holds the activity context
     private Context context;
 
+    //customlist constructor
     public CustomList(Context context, ArrayList<Ride> rides){
         super(context, 0, rides);
         this.rides=rides;
         this.context=context;
     }
 
+
+    //set the values for the views inh the listview
     public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
         View view = convertView;
 
@@ -39,6 +47,7 @@ public class CustomList extends ArrayAdapter<Ride> {
         TextView cadence = view.findViewById(R.id.cadence_text);
         TextView comments = view.findViewById(R.id.comments_text);
 
+        //gets the new values added/updated and put onto the list
         date.setText(ride.getDate());
         time.setText(ride.getTime());
         distance.setText(ride.getDistance());
